@@ -1,0 +1,28 @@
+topic-01:下载redis
+	a.进入redis目录
+	cd /usr/developer/redis
+	
+	b.下载redis压缩包
+	wget http://download.redis.io/releases/redis-2.8.17.tar.gz
+
+	c.解压
+	tar -zxvf redis-2.8.17.tar.gz
+
+	d.进入redis-2.8.17进行安装
+	cd redis-2.8.17
+	make
+
+	e.启动redis服务
+	cd src
+	./redis-server
+	
+	f.启动成功之后，当前的连接我们不关闭，重新开一个连接，连接到linux虚拟机
+	cd /usr/developer/redis/redis-2.8.17/src
+	./redis-cli
+	redis> set foo test #这里是设置一个值
+	redis> get foo #拿到刚才设置的值
+
+
+
+
+
