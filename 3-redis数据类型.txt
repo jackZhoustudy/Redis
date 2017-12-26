@@ -1,0 +1,40 @@
+redis数据类型
+topic-01:String(字符串)
+	redis> set name "jackZhou"
+	redis> get name
+
+topic-02:Hash(哈希)
+	redis> hmset myhash val1 "hello" val2 "world"
+	redis> hget myhash val1
+	redis> hget myhash val2
+
+topic-03:List(列表,可重复)
+	#设置值
+	redis> lpush jack java
+	redis> lpush jack mysql
+	redis> lpush jack apache
+	redis> lpush jack linux
+	#取值
+	redis> lrange jack 0 10
+
+topic-04:Set(集合，不可重复)
+	Set是String类型的无序集合
+	#注意一点变量名不能与前面相同，否则会报错
+	redis> sadd sjack java
+	redis> sadd sjack apache
+	redis> sadd sjack mysql
+
+	redis> smember sjack
+
+topic-05:zset(sorted set：有序集合，不可重复)
+	Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
+	不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
+	zset的成员是唯一的,但分数(score)却可以重复。
+
+	redis> zadd runjack 2 redis
+	redis> zadd runjack 3 java
+	redis> zadd runjack 6 mysql
+
+	redis> zrangebyscore runjack 0 100
+
+

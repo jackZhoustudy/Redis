@@ -21,8 +21,3 @@ topic-01:下载redis
 	./redis-cli
 	redis> set foo test #这里是设置一个值
 	redis> get foo #拿到刚才设置的值
-
-
-
-
-
