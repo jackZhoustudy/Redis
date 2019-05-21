@@ -1,0 +1,37 @@
+topic-01:连接redis
+	#去往redis的安装目录
+	cd /data/developer/redis/redis-2.8.17/src/
+	#连接本地redis
+	./redis-cli
+	
+
+topic-02:redis的键
+	#存储键名为username的值是jack
+	 set username jack
+
+	#取值
+	 get username
+
+	#判断键名为username的是否存在
+	 exists username
+
+	#为给定key设置过期时间，单位是秒
+	expire username 60
+	
+	#返回键剩余的时间（单位：毫秒）
+	pttl username
+	#返回剩余时间（单位：秒）
+	ttl username
+	#移除过期时间，key将会长期保存
+	persist username
+
+	#存在时删除键
+	del username
+	
+	#key重命名
+	rename username user
+	
+	#返回key存储值的类型
+	type user
+
+	
