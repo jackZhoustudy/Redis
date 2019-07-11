@@ -1,0 +1,56 @@
+topic-01:redis多数据
+	redis中默认有16个数据库
+	名字是从0,1...15
+	在redis上所做的所有数据库操作，默认都是在0号数据库上操作的
+
+topic-02:操作redis多数据库
+
+	#连接redis数据库(默认是进入0号数据库)
+	./redis-cli
+	
+	set username jack
+	set password 123456
+	#查看所有的键
+	keys *
+	结果：
+		1) "username"
+		2) "password"
+	
+	#进入1号数据库
+	select 1
+	#查看1号所有的键
+	keys *
+	结果为空
+
+	#往1号里面设置值
+	set sex man
+	
+	keys *
+	结果：	1) "sex"
+
+	#切换到0号数据库
+	select 0
+	
+	keys *
+	结果：
+		1) "username"
+		2) "password"
+	这里说明：在redis中不同数据库之间，不能共享键值对，可以把数据库理解成一个map集合
+
+	#我们可以把某个键对进行数据库移植
+	move username 1 #将键名为username移植到1号数据库
+	
+	#查看1号数据库里的键
+	127.0.0.1:6379[1]> keys *
+	1) "username"
+	2) "sex"
+
+	#数据库的清空
+	flushdb
+
+	redis服务器数据的清空
+
+	flushall   #0-15号数据库所有键值对都要删除掉,慎用!!!!!不可挽回的
+
+
+
